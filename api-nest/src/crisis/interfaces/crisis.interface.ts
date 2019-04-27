@@ -17,4 +17,5 @@ export interface ICrisis extends Document {
         }
     ];
     readonly description: string 
+    readonly mediaURL: string
 }

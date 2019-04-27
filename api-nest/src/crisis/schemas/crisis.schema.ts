@@ -15,5 +15,6 @@ export const CrisisSchema = new mongoose.Schema({
             lost_homes: Number,
         },
     ],
-    description: String,  
+    description: String,
+    medialURL: String,  
 });

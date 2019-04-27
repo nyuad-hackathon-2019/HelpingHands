@@ -14,6 +14,7 @@ export class CreateCrisisDto {
             lost_homes: number,
         }
     ];
-    readonly description: string 
+    readonly description: string;
+    readonly medialURL: string;
 
 }
