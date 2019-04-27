@@ -6,11 +6,11 @@ import { CreateCrisisDto } from './dto/createCrisisDto';
 import { debug } from 'console';
 
 @Injectable()
-export class CrisisService implements ICrisiService{
-    constructor (@InjectModel('Crisis') private readonly crisisModel: Model<ICrisis>) {}
+export class CrisisService implements ICrisiService {
+    constructor(@InjectModel('Crisis') private readonly crisisModel: Model<ICrisis>) {}
     async findAll(): Promise<ICrisis[]> {
-        return await this.crisisModel.find().exec()
-    }    
+        return await this.crisisModel.find().exec();
+    }
     async findOne(options: object): Promise<ICrisis[]> {
         return await this.crisisModel.find(options).exec();
     }
@@ -42,6 +42,4 @@ export class CrisisService implements ICrisiService{
             return 'The todo could not be deleted';
         }
     }
-
-
 }
