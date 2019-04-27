@@ -1,18 +1,15 @@
-	.overlay-content
-	{
-	
-	    padding: 20px 5px;
+.overlay-content {	
+    padding: 20px 5px;
     max-height: 195px;
     overflow: auto;
-position: absolute;
+    position: absolute;
     bottom: 0;
     background: rgba(13, 28, 53, 0.64);
     
     color: #fff;
-    font-weight: 700;
-   
+    font-weight: 700;	
+}
 
-	
-	
-	}
-	
+body {
+    color: red;
+}
