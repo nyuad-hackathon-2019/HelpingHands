@@ -1,5 +1,5 @@
 import { Controller, Get, Response, HttpStatus, Post, Body, Logger } from '@nestjs/common';
-import { NeedPhysicalService } from './NeedPhysical.service';
+import { NeedPhysicalService } from './needPhysical.service';
 import { CreateNeedPhysicalDto } from './dto/createNeedPhysicalDto';
 import { debug } from 'util';
 
