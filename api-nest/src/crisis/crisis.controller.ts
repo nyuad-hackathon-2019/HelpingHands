@@ -25,7 +25,7 @@ export class CrisisController {
     // NOTE: wrote without testing might work
     @Post('findcrisis')
     async findCrisis(@Response() res, @Body() body) {
-        console.log(findcrisis, body);
+        console.log(body);
         const crisis = await this.crisis_service.findById(body.id);
         return res.status(HttpStatus.OK).json(crisis);
     }
