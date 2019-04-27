@@ -1,7 +1,6 @@
-import { Controller, Get, Response, HttpStatus, Post, Body, Logger } from '@nestjs/common';
+import { Controller, Get, Response, HttpStatus, Post, Body, Logger, Patch, Param } from '@nestjs/common';
 import { CrisisService } from './crisis.service';
 import { CreateCrisisDto } from './dto/createCrisisDto';
-import { debug } from 'util';
 
 @Controller('crisis')
 export class CrisisController {
@@ -23,10 +22,10 @@ export class CrisisController {
     }
 
     // NOTE: wrote without testing might work
-    @Post('findcrisis')
-    async findCrisis(@Response() res, @Body() body) {
-        console.log(body);
-        const crisis = await this.crisis_service.findById(body.id);
+    @Get('/:crisisId')
+    async findCrisis(@Response() res, @Param() param) {
+        console.log(param.crisisId);
+        const crisis = await this.crisis_service.findById(param.crisisId);
         return res.status(HttpStatus.OK).json(crisis);
     }
 }
