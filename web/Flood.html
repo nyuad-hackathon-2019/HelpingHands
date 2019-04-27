@@ -118,7 +118,7 @@ fetch(url, {
         console.log(data);
 
         const row = document.getElementById('target');
-        row.innerHTML += createItem(data.title, data.description, data.location.city, data.causalities.affected_people, data.causalities.dead_people);
+        row.innerHTML += createItem(data.title, data.description, data.location.city, data.causalities[0].affected_people, data.causalities[0].dead_people, data.date.toString());
         // row.lastElementChild.children[0].
 
         let needPhysicalUrl = "http://127.0.0.1:3000/needPhysical";
