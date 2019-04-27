@@ -114,7 +114,7 @@ function createItem(title, description, location, peopleAffected, deaths, date) 
 fetch(url, {
     method: 'GET',
 }).then(response => response.json())
-    .then(data => {
+    .then(async (data) => {
         console.log(data);
 
         const row = document.getElementById('target');
@@ -132,7 +132,7 @@ fetch(url, {
         skillNeeds = skillNeeds.filter(need -> need.crisisId === projectId));
 
         console.log('filtered: ', physicalNeeds, skillNeeds);
-        
+
     });
 
 
