@@ -39,28 +39,8 @@
         <br>
             <section class="portfolio-block photography">
                     <div class="container">
-                         <div class="row no-gutters">
-                            <div class="col-md-6 col-lg-4 item zoom-on-hover"><a href="#"><img class="img-fluid image" src="assets/img/nature/image5.jpg"></a>
-                            <div class="overlay-content">
-                                       <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
-                                           <h4>Flood In -----</h4>
-                                       </div>
-                                   </div>
-                            </div>
-                            <div class="col-md-6 col-lg-4 item zoom-on-hover"><a href="#"><img class="img-fluid image" src="assets/img/nature/image2.jpg"></a>
-                            <div class="overlay-content">
-                                       <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
-                                           <h4>Flood In -----</h4>
-                                       </div>
-                                   </div>
-                                   </div>
-                            <div class="col-md-6 col-lg-4 item zoom-on-hover"><a href="#"><img class="img-fluid image" src="assets/img/tech/image4.jpg"></a>
-                            <div class="overlay-content">
-                                       <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
-                                           <h4>Flood In -----</h4>
-                                       </div>
-                                   </div>
-                                   </div>
+                         <div class="row no-gutters" id="row">
+                            
                         </div>
                     </div>
                 </section>
@@ -121,6 +101,38 @@
     <script src="assets/js/Contact-Form-v2-Modal--Full-with-Google-Map.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pikaday/1.6.1/pikaday.min.js"></script>
     <script src="assets/js/theme.js"></script>
+
+    <script>
+    
+    url = "http://127.0.0.1:3000/crisis";
+        //assets/img/nature/image1.jpg
+        function createItem(src, id, title, description) {
+            const item = `  
+                <div class="col-md-6 col-lg-4 item zoom-on-hover">
+                    <a href="flood.html#${id}"><img class="img-fluid image" src="${src}"></a>
+                            <div class="overlay-content">
+                                    <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
+                                        <h4>${title}</h4>
+                                    </div>
+                            </div>
+                </div>`;
+            return item;
+        }
+        
+        fetch(url)
+            .then(r => r.json())
+            .then(data => {
+                // data.
+                console.log(data);
+                const row = document.getElementById('row');
+                data.forEach((dataItem) => {
+                    row.innerHTML += createItem(dataItem.mediaURL, dataItem._id, dataItem.title, dataItem.location.city);
+                    // row.lastElementChild.children[0].
+                });
+
+            });
+    
+    </script>
 
 </body>
 

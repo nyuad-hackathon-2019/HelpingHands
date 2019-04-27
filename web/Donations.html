@@ -108,11 +108,11 @@
     
         url = "http://127.0.0.1:3000/crisis";
         //assets/img/nature/image1.jpg
-        function createItem(src, title, description) {
+        function createItem(src, id, title, description) {
             const item = `<div class="col-md-6 col-lg-4">
-                        <div class="card border-0"><a href="#"><img src="${src}" alt="Card Image" class="card-img-top scale-on-hover"></a>
+                        <div class="card border-0"><a href="flood.html#${id}"><img src="${src}" alt="Card Image" class="card-img-top scale-on-hover"></a>
                             <div class="card-body">
-                                <h6><a href="#">${title}</a></h6>
+                                <h6><a href="flood.html#${id}">${title}</a></h6>
                                 <p class="text-muted card-text">${description}</p>
                             </div>
                         </div>
@@ -127,7 +127,7 @@
                 console.log(data);
                 const row = document.getElementById('row');
                 data.forEach((dataItem) => {
-                    row.innerHTML += createItem(dataItem.mediaURL, dataItem.title, dataItem.location.city);
+                    row.innerHTML += createItem(dataItem.mediaURL, dataItem._id, dataItem.title, dataItem.location.city);
                     // row.lastElementChild.children[0].
                 });
 
