@@ -1,15 +1,11 @@
 export class CreateCrisisDto {
     // tslint:disable-next-line:variable-name
-    readonly _id: string;
-    readonly charityId: string;
-    readonly itemsIds: string[];
-    readonly personalSkillsIds: string[];
+    readonly title: string;
     readonly location: {
         country: string,
         city: string,
     };
     readonly date: Date;
-    readonly title: string;
     readonly causalities: [
         {
             affected_people: number,
@@ -18,5 +14,6 @@ export class CreateCrisisDto {
             lost_homes: number,
         }
     ];
+    readonly description: string 
 
 }

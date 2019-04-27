@@ -1,15 +1,12 @@
 import * as mongoose from 'mongoose';
 
 export const CrisisSchema = new mongoose.Schema({
-    charityId: String,
-    itemsIds: [String],
-    personalSkillsIds: [String],
+    title: String,
     location: {
         country: String,
         city: String,
     },
     date: Date,
-    title: String,
     causalities: [
         {
             affected_people: Number,
@@ -18,4 +15,5 @@ export const CrisisSchema = new mongoose.Schema({
             lost_homes: Number,
         },
     ],
+    description: String,  
 });
