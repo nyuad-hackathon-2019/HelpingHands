@@ -28,7 +28,7 @@
                     <li class="nav-item" role="presentation"><a class="nav-link" href="Donations.html">Projects</a></li>
                     <li class="nav-item" role="presentation"><a class="nav-link" href="About%20Us.html">About Us</a></li>
                     <li class="nav-item" role="presentation"><a class="nav-link" href="Login.html">Login</a></li>
-					
+
                 </ul>
             </div>
         </div>
@@ -36,9 +36,9 @@
 	 <div class="container">
 	 <br><br><br><br><br>
   <center>
-    <div id="target">  
-        
-    </div>    
+    <div id="target">
+
+    </div>
     <br>
    <h1>How Can You Help?</h1></center><br>
     <div class="card">
@@ -115,17 +115,25 @@ fetch(url, {
     method: 'GET',
 }).then(response => response.json())
     .then(data => {
-
         console.log(data);
 
         const row = document.getElementById('target');
-    
         row.innerHTML += createItem(data.title, data.description, data.location.city, data.causalities.affected_people, data.causalities.dead_people);
         // row.lastElementChild.children[0].
 
+        let needPhysicalUrl = "http://127.0.0.1:3000/needPhysical";
+        let physicalNeeds = await fetch(needPhysicalUrl).then(r => r.json());
 
+        let needSkillUrl = "http://127.0.0.1:3000/needSkill";
+        let skillNeeds = await fetch(needSkillUrl).then(r => r.json());
+
+        console.log('TOTAL: ' physicalNeeds, skillNeeds);
+        physicalNeeds = physicalNeeds.filter(need => need.crisisId === projectId);
+        skillNeeds = skillNeeds.filter(need -> need.crisisId === projectId));
+
+        console.log('filtered: ', physicalNeeds, skillNeeds);
+        
     });
-    
+
 
 </script>
-
