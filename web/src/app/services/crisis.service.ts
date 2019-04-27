@@ -18,4 +18,8 @@ export class CrisisService {
     // tslint:disable-next-line:object-literal-shorthand
     return this._http.post<any>(url, crisis, {headers: headers});
    }
+   getCrisis(): Observable<any[]> {
+     const url = this.BASE_URL;
+     return this._http.get<any[]>(url);
+   }
 }

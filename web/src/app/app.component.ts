@@ -11,16 +11,14 @@ export class AppComponent implements OnInit {
   constructor(private crisis_service: CrisisService) {}
   title = 'web';
   ngOnInit(): void {
+    /*
     const crisis = {
-      charityId: 'lalala',
-      itemsIds: ['lalala'],
-      personalSkillsIds: ['lalala'],
       location: {
-        country: 'some unfortunate country :p',
-        city: 'a city in that unfortunate country :p'
+        country: 'another unfortunate country :p',
+        city: 'a city in that other unfortunate country :p'
       },
       date: Date.now(),
-      title: 'a very bad flood',
+      title: 'a very bad hurricane',
       causalities: [
         {
           affected_people: 234,
@@ -28,13 +26,14 @@ export class AppComponent implements OnInit {
           dead_people: 10,
           lost_homes: 237,
         },
-      ]
+      ],
+      description: 'some description',
     };
     this.crisis_service.createCrisis(crisis).subscribe(
       (data) => {
         console.log(data);
       }
-    );
+    );*/
   }
 
 }
