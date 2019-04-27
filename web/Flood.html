@@ -102,40 +102,30 @@ projectId = window.location.hash.substr(1);
 
 url = "http://localhost:3000/crisis/"+projectId;
 
-function createItem(src, id, title, description, location) {
-            const item = `<h1>${title}</h1>
-<p>Location : ${location}</p>
-<p style="height: 100px;">Description :&nbsp;</p>
-<p>Affected People : 5 Billion &nbsp&nbsp&nbsp&nbsp,Deaths : 0          &nbsp&nbsp&nbsp&nbsp,Date : 5/1/2019       </p>`;
-            return item;
-        }
+function createItem(title, description, location, peopleAffected, deaths, date) {
+    const item = `<h1>${title}</h1>
+        <p>Location : ${location}</p>
+        <p style="height: 100px;">Description: ${description}</p>
+        <p>Affected People : ${peopleAffected}, Deaths: ${deaths}</p>
+        <p>Date: ${date}</p>`;
+    return item;
+}
 
 fetch(url, {
     method: 'GET',
 }).then(response => response.json())
     .then(data => {
 
-        console.log(data));
+        console.log(data);
+
+        const row = document.getElementById('target');
+    
+        row.innerHTML += createItem(data.title, data.description, data.location.city, data.causalities.affected_people, data.causalities.dead_people);
+        // row.lastElementChild.children[0].
 
 
-
-    }
-
-
-
-        
-        fetch(url)
-            .then(r => r.json())
-            .then(data => {
-                // data.
-                console.log(data);
-                const row = document.getElementById('row');
-                data.forEach((dataItem) => {
-                    row.innerHTML += createItem(dataItem.mediaURL, dataItem._id, dataItem.title, dataItem.location.city);
-                    // row.lastElementChild.children[0].
-                });
-
-            });
+    });
+    
 
 </script>
 
