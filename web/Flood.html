@@ -127,9 +127,9 @@ fetch(url, {
         let needSkillUrl = "http://127.0.0.1:3000/needSkill";
         let skillNeeds = await fetch(needSkillUrl).then(r => r.json());
 
-        console.log('TOTAL: ' physicalNeeds, skillNeeds);
+        console.log('TOTAL: ',  physicalNeeds, skillNeeds);
         physicalNeeds = physicalNeeds.filter(need => need.crisisId === projectId);
-        skillNeeds = skillNeeds.filter(need -> need.crisisId === projectId));
+        skillNeeds = skillNeeds.filter(need => need.crisisId === projectId);
 
         console.log('filtered: ', physicalNeeds, skillNeeds);
 

@@ -120,20 +120,27 @@
                 </div>`;
             return item;
         }
-        
+
         fetch(url)
             .then(r => r.json())
             .then(data => {
                 // data.
                 console.log(data);
                 const row = document.getElementById('row');
-                data.forEach((dataItem) => {
-                    row.innerHTML += createItem(dataItem.mediaURL, dataItem._id, dataItem.title, dataItem.location.city);
+                var lengthData = data.length
+                console.log(lengthData);
+                console.log(data[0].mediaURL);
+
+                //limit number to be displayed on the homepage to 3
+                for(var i=0; i<=2; i++){
+                    console.log(data[i].mediaURL);
+                    row.innerHTML += createItem(data[i].mediaURL, data[i]._id, data[i].title, data[i].location.city);
+
                     // row.lastElementChild.children[0].
-                });
+                };
 
             });
-    
+
     </script>
 
 </body>
