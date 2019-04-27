@@ -1,0 +1,12 @@
+
+//test posting to charity endpoint
+
+curl -d '{"charityId": "2", "name":"World Vision", "website":"https://www.worldvision.org/", "location": {"country": "America", "city":"New York City"}, "description": "Each day, thousands of people – people just like you – provide compassionate care to those in need. Our network of generous donors, volunteers and employees share a mission of preventing and relieving suffering, here at home and around the world.", "logoURL": "https://www.logodesignlove.com/wp-content/uploads/2011/10/red-cross-logo.jpg","verifiedCharity":true}' -H "Content-Type:application/json" -X POST '127.0.0.1:3000/charity'
+
+//test posting to crisis endpoint
+
+curl -d '{"title": "flood in Thailand", "location": {"country": "Thailand", "city":"Bangkok"}, "Date": "2019-04-27T07:39:59.265Z", "causalities": [{"affected_people": 10000,"injured_people": 100,"dead_people": 10,"lost_homes": 10000}], "description": "There was a big flood many people died."}' -H "Content-Type:application/json" -X POST '127.0.0.1:3000/crisis/create'
+
+//test posting to needPhysical endpoint
+
+curl -d '{"name": "Boots", "charityId":"World Vision", "crisisId":"flood in Nigeria", "quantity": {"required": 1000, "provided":100}, "description": "We need boots", "helpMethods": [{"dropOff": {"active": true, "dropOffLocations": "lalalalala"},"monetaryDonation": {"active": true, "donationInstructions": "got to this website"}}],"pictureURL": "www.picture.com"}' -H "Content-Type:application/json" -X POST '127.0.0.1:3000/needphysical'
