@@ -15,7 +15,7 @@ export class CrisisController {
         return res.status(HttpStatus.OK).json(crisis_list);
     }
 
-    @Post('')
+    @Post('create')
     async createCrisis(@Response() res, @Body() body: CreateCrisisDto) {
         console.log(body);
         const todo = await this.crisis_service.create(body);
