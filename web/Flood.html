@@ -35,11 +35,11 @@
     </nav>
 	 <div class="container">
 	 <br><br><br><br><br>
-  <center>  <h1>Flood In -----</h1>
-    <p>Location : -----</p>
-    <p style="height: 100px;">Description :&nbsp;</p>
-    <p>Affected People : 5 Billion &nbsp&nbsp&nbsp&nbsp,Deaths : 0          &nbsp&nbsp&nbsp&nbsp,Date : 5/1/2019       </p>
- <br>
+  <center>
+    <div id="target">  
+        
+    </div>    
+    <br>
    <h1>How Can You Help?</h1></center><br>
     <div class="card">
         <div class="card-body">
@@ -95,3 +95,47 @@
 </footer>
 
 </html>
+
+<script>
+
+projectId = window.location.hash.substr(1);
+
+url = "http://localhost:3000/crisis/"+projectId;
+
+function createItem(src, id, title, description, location) {
+            const item = `<h1>${title}</h1>
+<p>Location : ${location}</p>
+<p style="height: 100px;">Description :&nbsp;</p>
+<p>Affected People : 5 Billion &nbsp&nbsp&nbsp&nbsp,Deaths : 0          &nbsp&nbsp&nbsp&nbsp,Date : 5/1/2019       </p>`;
+            return item;
+        }
+
+fetch(url, {
+    method: 'GET',
+}).then(response => response.json())
+    .then(data => {
+
+        console.log(data));
+
+
+
+    }
+
+
+
+        
+        fetch(url)
+            .then(r => r.json())
+            .then(data => {
+                // data.
+                console.log(data);
+                const row = document.getElementById('row');
+                data.forEach((dataItem) => {
+                    row.innerHTML += createItem(dataItem.mediaURL, dataItem._id, dataItem.title, dataItem.location.city);
+                    // row.lastElementChild.children[0].
+                });
+
+            });
+
+</script>
+
