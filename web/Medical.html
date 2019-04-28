@@ -28,19 +28,35 @@
                     <li class="nav-item" role="presentation"><a class="nav-link" href="Donations.html">Projects</a></li>
                     <li class="nav-item" role="presentation"><a class="nav-link" href="About%20Us.html">About Us</a></li>
                     <li class="nav-item" role="presentation"><a class="nav-link" href="login.html">Login</a></li>
-					
+
                 </ul>
             </div>
         </div>
-    </nav>
+    </nav><br><br><br><br><br><br><br>
     <h1>Medical Profesional</h1>
-    <p style="height: 300px;">Spec</p><button class="btn btn-primary" type="button">Contact Me</button>
+    <img id="pic">
+    <p>Spec</p>
+    <p id="requirements"></p>
+    <center><button class="btn btn-primary" type="button">Contact Me</button></center>
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="assets/js/bs-animation.js"></script>
     <script src="assets/js/Contact-Form-v2-Modal--Full-with-Google-Map.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pikaday/1.6.1/pikaday.min.js"></script>
     <script src="assets/js/theme.js"></script>
+    <script>
+
+    async function haha(){
+        const needId = window.location.hash.substr(1);
+        const url = "http://localhost:3000/needSkill/";
+        const needs = await fetch(url).then(r => r.json());
+        need = needs.find(need => need._id === needId);
+        document.getElementById('requirements').innerText = need.description;
+        // NOTE: should we have a .specification up here?
+        document.getElementById('pic').src = need.pictureURL;
+    }
+    haha();
+    </script>
 </body>
 
 </html>

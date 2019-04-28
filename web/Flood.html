@@ -170,7 +170,7 @@ function createItem(title, description, location, peopleAffected, deaths, date, 
 <div class="row">
   <div class="column" style="background-color:#f4f4f4; float: left; text-align: left; min-height: 320px;">
     <p style="">${description}</p>
-    <p>Affected People : ${peopleAffected}</p> 
+    <p>Affected People : ${peopleAffected}</p>
     <p>Deaths: ${deaths}</p>
     <p>Date: ${date.substring(0,10)}</p>
   </div>
@@ -266,7 +266,7 @@ fetch(url, {
                 charity.name,
                 charity.website,
                 false,
-                'Donate.html#' + need._id
+                'Medical.html#' + need._id
             );
         });
         // function createNeed(name, required, provided, charityImgUrl, charityName, charityUrl, donate, needUrl) {
