@@ -280,6 +280,8 @@ span.price {
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pikaday/1.6.1/pikaday.min.js"></script>
     <script src="assets/js/theme.js"></script>
     <script>
+
+    async function haha(){  
         const needId = window.location.hash.substr(1);
         const url = "http://localhost:3000/needPhysical/";
         const needs = await fetch(url).then(r => r.json());
@@ -287,6 +289,8 @@ span.price {
         document.getElementById('requirements').innerText = need.description;
         // NOTE: should we have a .specification up here?
         document.getElementById('pic').src = need.pictureURL;
+    }
+    haha();
     </script>
 </body>
 
