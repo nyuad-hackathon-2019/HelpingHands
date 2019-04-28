@@ -139,21 +139,44 @@ url = "http://localhost:3000/crisis/"+projectId;
 
 function createItem(title, description, location, peopleAffected, deaths, date, image)  {
     const item = `
-    <h1>${title}</h1>
-    <p>Location : ${location}</p>
-    <div class="row">
 
-        <span class="column" style="text-algin: left float: left">
-            <p style="">${description}</p>
-            <p>Affected People : ${peopleAffected}</p> 
-            <p>Deaths: ${deaths}</p>
-            <p>Date: ${date.substring(0,10)}</p>
-        </span>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+* {
+  box-sizing: border-box;
+}
 
-        <span class="column" style="text-algin: right float: right">
-        <img style="width: 100%; height: auto; max-width: 30vw;" src = ${image}>
-        </span>    
+/* Create two equal columns that floats next to each other */
+.column {
+  float: left;
+  width: 50%;
+  padding: 10px;
+  height: 100%; /* Should be removed. Only for demonstration */
+}
 
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+</style>
+</head>
+<body>
+
+<h1>${title}</h1>
+<p>Location : ${location}</p>
+
+<div class="row">
+  <div class="column" style="background-color:#f4f4f4; float: left; text-align: left; min-height: 320px;">
+    <p style="">${description}</p>
+    <p>Affected People : ${peopleAffected}</p> 
+    <p>Deaths: ${deaths}</p>
+    <p>Date: ${date.substring(0,10)}</p>
+  </div>
+  <div class="column" style="background-color:#f4f4f4; height:100%; min-height: 320px;">
+    <img style="width: 100%; height: auto;max-height: 300px" src = ${image}>
+  </div>
 </div>`;
     return item;
 }
