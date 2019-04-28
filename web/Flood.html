@@ -137,12 +137,21 @@ projectId = window.location.hash.substr(1);
 
 url = "http://localhost:3000/crisis/"+projectId;
 
-function createItem(title, description, location, peopleAffected, deaths, date) {
-    const item = `<h1>${title}</h1>
-        <p>Location : ${location}</p>
-        <p style="height: 100px;">Description: ${description}</p>
-        <p>Affected People : ${peopleAffected}, Deaths: ${deaths}</p>
-        <p>Date: ${date}</p>`;
+function createItem(title, description, location, peopleAffected, deaths, date, image)  {
+    const item = `
+    <h1>${title}</h1>
+    <p>Location : ${location}</p>
+    <div class="row">
+    <div class="column">
+        <p style="">${description}</p>
+        <p>Affected People : ${peopleAffected}</p> 
+        <p>Deaths: ${deaths}</p>
+        <p>Date: ${date.substring(0,10)}</p>
+    </div>
+  <div class="column">
+        <img src = ${image}>
+  </div>
+</div>`;
     return item;
 }
 
@@ -188,7 +197,7 @@ fetch(url, {
         console.log(data);
 
         const row = document.getElementById('target');
-        row.innerHTML += createItem(data.title, data.description, data.location.city, data.causalities[0].affected_people, data.causalities[0].dead_people, data.date.toString());
+        row.innerHTML += createItem(data.title, data.description, data.location.city, data.causalities[0].affected_people, data.causalities[0].dead_people, data.date.toString(), data.mediaURL);
        // row.lastElementChild.children[0].
 
         let needPhysicalUrl = "http://127.0.0.1:3000/needPhysical";
