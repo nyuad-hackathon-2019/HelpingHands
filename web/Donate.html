@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:300,400,700">
+    <link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/fonts/ionicons.min.css">
+    <link rel="stylesheet" href="assets/css/Campaign-Progress--Summary-Panel.css">
+    <link rel="stylesheet" href="assets/css/Contact-Form-v2-Modal--Full-with-Google-Map.css">
+    <link rel="stylesheet" href="assets/css/Drag--Drop-Upload-Form.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pikaday/1.6.1/css/pikaday.min.css">
+    <link rel="stylesheet" href="assets/css/Login-Form-Clean.css">
+    <link rel="stylesheet" href="assets/css/Pretty-Registration-Form.css">
+	 <script>
+  
+  
+      function myFunction(divid) {
+
+      $('.cnt_div1').hide();
+        var x = document.getElementById(divid);
+        
+        if (x.style.display === "none") {
+          x.style.display = "block";
+        } else {
+          x.style.display = "none";
+        }
+        $('html,body').animate({
+        scrollTop: $("#" + divid).offset().top
+    }, 'fast');
+      }
+      </script>
+	      <style>
+body {
+  font-family: Arial;
+  font-size: 17px;
+  padding: 8px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.row {
+  display: -ms-flexbox; /* IE10 */
+  display: flex;
+  -ms-flex-wrap: wrap; /* IE10 */
+  flex-wrap: wrap;
+  margin: 0 -16px;
+}
+
+.col-25 {
+  -ms-flex: 25%; /* IE10 */
+  flex: 25%;
+}
+
+.col-50 {
+  -ms-flex: 50%; /* IE10 */
+  flex: 50%;
+}
+
+.col-75 {
+  -ms-flex: 75%; /* IE10 */
+  flex: 75%;
+}
+
+.col-25,
+.col-50,
+.col-75 {
+  padding: 0 16px;
+}
+
+.container {
+  background-color: #f2f2f2;
+  padding: 5px 20px 15px 20px;
+  border: 1px solid lightgrey;
+  border-radius: 3px;
+}
+
+input[type=text] {
+  width: 100%;
+  margin-bottom: 20px;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+label {
+  margin-bottom: 10px;
+  display: block;
+}
+
+.icon-container {
+  margin-bottom: 20px;
+  padding: 7px 0;
+  font-size: 24px;
+}
+
+.btn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 12px;
+  margin: 10px 0;
+  border: none;
+  width: 100%;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 17px;
+}
+
+.btn:hover {
+  background-color: #45a049;
+}
+
+a {
+  color: #2196F3;
+}
+
+hr {
+  border: 1px solid lightgrey;
+}
+
+span.price {
+  float: right;
+  color: grey;
+}
+
+/* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other (also change the direction - make the "cart" column go on top) */
+@media (max-width: 800px) {
+  .row {
+    flex-direction: column-reverse;
+  }
+  .col-25 {
+    margin-bottom: 20px;
+  }
+}
+</style>
+</head>
+
+<body>
+     <nav class="navbar navbar-dark navbar-expand-lg fixed-top bg-white portfolio-navbar gradient">
+        <div class="container" style="background: linear-gradient(120deg,#7f70f5,#0ea0ff);"><img src="assets/img/avatars/logo.png" alt="logo" height="42" width="42"><a class="navbar-brand logo" href="index.html">HelpingHands</a><button class="navbar-toggler" data-toggle="collapse" data-target="#navbarNav"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse"
+                id="navbarNav">
+                <ul class="nav navbar-nav ml-auto">
+                    <li class="nav-item" role="presentation"><a class="nav-link active" href="index.html">Home</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="Donations.html">Projects</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="About%20Us.html">About Us</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="login.html">Login</a></li>
+					
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <main class="page projects-page">
+        <section class="portfolio-block projects-cards">
+            <div class="container">
+                <div class="heading">
+                    <h2>Donate Options</h2>
+                </div>
+                
+
+            <!--        
+                        <div class="card border-0"><a href="#"></a></div><a class="btn btn-primary btn-circle btnCircular" role="button" href="Payment.html" data-bs-hover-animate="tada" style="width: 200px;height: 200px;padding-top: 88px;">Money</a>
+						
+				
+						
+                        <div class="card border-0"><a href="#"></a></div><a class="btn btn-primary btn-circle btnCircular" role="button" href="Item.html" data-bs-hover-animate="tada" style="width: 200px;height: 200px;padding-top: 88px;">Item</a>
+					-->
+					<div class="row">
+				<div class="col">
+				<button onclick="myFunction('money')" class="btn btn-primary btn-lg">Money</button>
+				</div>
+				<div class="col">
+					<button onclick="myFunction('item')" class="btn btn-primary btn-lg">Item</button>
+					</div>
+					</div>
+					<div id="money" style=" margin-left: 30px;display: none;float: right;display: none;
+          margin-right: 30px;" class="content margin-top-bottom-30 cnt_div1 col-10" >
+             <div class="row">
+  <div class="col-75">
+    <div class="container">
+      <form action="/action_page.php">
+      <br><BR><BR>
+        <div class="row">
+          <div class="col-50">
+            <h3>Billing Address</h3>
+            <label for="fname"><i class="fa fa-user"></i> Full Name</label>
+            <input type="text" id="fname" name="firstname" placeholder="John M. Doe">
+            <label for="email"><i class="fa fa-envelope"></i> Email</label>
+            <input type="text" id="email" name="email" placeholder="john@example.com">
+            <label for="adr"><i class="fa fa-address-card-o"></i> Address</label>
+            <input type="text" id="adr" name="address" placeholder="542 W. 15th Street">
+            <label for="city"><i class="fa fa-institution"></i> City</label>
+            <input type="text" id="city" name="city" placeholder="New York">
+
+            <div class="row">
+              <div class="col-50">
+                <label for="state">State</label>
+                <input type="text" id="state" name="state" placeholder="NY">
+              </div>
+              <div class="col-50">
+                <label for="zip">Zip</label>
+                <input type="text" id="zip" name="zip" placeholder="10001">
+              </div>
+            </div>
+          </div>
+
+          <div class="col-50">
+            <h3>Payment</h3>
+            <label for="fname">Accepted Cards</label>
+            <div class="icon-container">
+              <i class="fa fa-cc-visa" style="color:navy;"></i>
+              <i class="fa fa-cc-amex" style="color:blue;"></i>
+              <i class="fa fa-cc-mastercard" style="color:red;"></i>
+              <i class="fa fa-cc-discover" style="color:orange;"></i>
+            </div>
+            <label for="cname">Name on Card</label>
+            <input type="text" id="cname" name="cardname" placeholder="John More Doe">
+            <label for="ccnum">Credit card number</label>
+            <input type="text" id="ccnum" name="cardnumber" placeholder="1111-2222-3333-4444">
+            <label for="expmonth">Exp Month</label>
+            <input type="text" id="expmonth" name="expmonth" placeholder="September">
+            <div class="row">
+              <div class="col-50">
+                <label for="expyear">Exp Year</label>
+                <input type="text" id="expyear" name="expyear" placeholder="2018">
+              </div>
+              <div class="col-50">
+                <label for="cvv">CVV</label>
+                <input type="text" id="cvv" name="cvv" placeholder="352">
+              </div>
+            </div>
+          </div>
+          
+        </div>
+        <input type="submit" value="Continue to checkout" class="btn">
+      </form>
+    </div>
+  </div>
+
+</div>
+			 
+			 </div>
+				 
+				 <div id="item" style=" margin-left: 30px;display: none;float: right;display: none;
+          margin-right: 30px;" class="content margin-top-bottom-30 cnt_div1 col-10" >
+		     <main class="page projects-page">
+        <section class="portfolio-block projects-cards">
+            <div class="container">
+                <div class="heading">
+                    <h2>Item Specifications</h2>
+                </div>
+           <div class="row">
+			<div class="col-md">
+			<center><p>Des</p></center>
+			</div>
+			</div>
+            </div>
+        </section>
+    </main>
+		  </div>
+         
+            </div>
+        </section>
+    </main>
+	<br><br><BR>
+ 
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/js/bs-animation.js"></script>
+    <script src="assets/js/Contact-Form-v2-Modal--Full-with-Google-Map.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pikaday/1.6.1/pikaday.min.js"></script>
+    <script src="assets/js/theme.js"></script>
+</body>
+
+</html>

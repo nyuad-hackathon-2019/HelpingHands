@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>index</title>
+    <title>New Need</title>
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:300,400,700">
     <link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
@@ -19,14 +19,31 @@
 </head>
 
 <body>
+ <nav class="navbar navbar-dark navbar-expand-lg fixed-top bg-white portfolio-navbar gradient">
+        <div class="container"><img src="assets/img/avatars/logo.png" alt="logo" height="42" width="42"><a class="navbar-brand logo" href="index.html">HelpingHands</a><button class="navbar-toggler" data-toggle="collapse" data-target="#navbarNav"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse"
+                id="navbarNav">
+                <ul class="nav navbar-nav ml-auto">
+                    <li class="nav-item" role="presentation"><a class="nav-link active" href="index.html">Home</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="Donations.html">Projects</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="About%20Us.html">About Us</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="login.html">Login</a></li>
+					
+                </ul>
+            </div>
+        </div>
+    </nav>
     <div class="row register-form">
         <div class="col-md-8 offset-md-2">
             <form class="custom-form" style="height: 700px;">
                 <h1>New Need</h1>
-                <div class="form-check" style="width: 200px;"><input class="form-check-input" type="radio" id="formCheck-1"><label class="form-check-label" for="formCheck-1">Item</label></div>
-                <div class="form-check" style="width: 200px;"><input class="form-check-input" type="radio" id="formCheck-1"><label class="form-check-label" for="formCheck-1">Donate</label></div>
-                <div class="form-check" style="width: 200px;"><input class="form-check-input" type="radio" id="formCheck-1"><label class="form-check-label" for="formCheck-1">Skill</label></div>
-                <div class="form-row form-group">
+				<div class="row">
+             <div class="col"><input type="radio" name="rad" value="Item">Item</div> 
+            <div class="col"> <input type="radio" name="rad" value="Item">Money</div>  
+             <div class="col"><input type="radio" name="rad" value="Item">Skill</div>   
+                </div>
+				<br><br><br><br>
+				<div class="form-row form-group">
                     <div class="col-sm-4 label-column"><label class="col-form-label" for="name-input-field">Name</label></div>
                     <div class="col-sm-6 input-column"><input class="form-control" type="text"></div>
                 </div>

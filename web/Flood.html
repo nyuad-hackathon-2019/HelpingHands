@@ -19,8 +19,8 @@
 </head>
 
 <body>
-<nav class="navbar navbar-dark navbar-expand-lg fixed-top bg-white portfolio-navbar gradient">
-        <div class="container"><a class="navbar-brand logo" href="index.html">HelpingHands</a><button class="navbar-toggler" data-toggle="collapse" data-target="#navbarNav"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+ <nav class="navbar navbar-dark navbar-expand-lg fixed-top bg-white portfolio-navbar gradient">
+        <div class="container"><img src="assets/img/avatars/logo.png" alt="logo" height="42" width="42"><a class="navbar-brand logo" href="index.html">HelpingHands</a><button class="navbar-toggler" data-toggle="collapse" data-target="#navbarNav"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse"
                 id="navbarNav">
                 <ul class="nav navbar-nav ml-auto">
@@ -28,23 +28,39 @@
                     <li class="nav-item" role="presentation"><a class="nav-link" href="Donations.html">Projects</a></li>
                     <li class="nav-item" role="presentation"><a class="nav-link" href="About%20Us.html">About Us</a></li>
                     <li class="nav-item" role="presentation"><a class="nav-link" href="Login.html">Login</a></li>
-					
                 </ul>
             </div>
         </div>
     </nav>
-	 <div class="container">
+	 <div class="container" id="needs">
 	 <br><br><br><br><br>
-  <center>  <h1>Flood In -----</h1>
-    <p>Location : -----</p>
-    <p style="height: 100px;">Description :&nbsp;</p>
-    <p>Affected People : 5 Billion &nbsp&nbsp&nbsp&nbsp,Deaths : 0          &nbsp&nbsp&nbsp&nbsp,Date : 5/1/2019       </p>
- <br>
+  <center>
+    <div id="target">
+
+    </div>
+    <br>
    <h1>How Can You Help?</h1></center><br>
+<!--
     <div class="card">
         <div class="card-body">
-            <h4><small class="display-inline-block pull-right"></small></h4><button class="btn btn-primary" type="button" style="float: right;">Donate</button>
-            <p style="width: 200px;">Item Name</p>
+		<div class="row">
+		<img src="assets/img/avatars/red.png" height="50%" width="50%"  style="display: block; margin-left: auto;margin-right: auto;width: 50%;">
+		</div>
+		<br><br>
+			<div class="row">
+			<div class="col-md">
+			<center><p>Des</p></center>
+			</div>
+			</div>
+			<br><br>
+            <div class="row">
+			     <div class="col"> <p style="width: 200px;">Item Name</p></div>
+				 <div class="col"></div> <div class="col"></div>
+					<div class="col"><img src="assets/img/avatars/red.png" alt="logo" height="42" width="55" ><p>Red Cross</p></div>
+					<div class="col"><a class="btn btn-primary btn-block button" href="charity.html"style="background: blue;" >Donate</a></div>
+
+
+			</div>
             <div class="progress" style="height: 40px;">
                 <div class="progress-bar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width: 70%;">70%</div>
             </div>
@@ -59,9 +75,27 @@
                 </div>
             </div>
         </div>
+		 </div>
+	    <div class="card">
         <div class="card-body">
-            <h4><small class="display-inline-block pull-right"></small></h4><button class="btn btn-primary" type="button" style="float: right;">Donate</button>
-            <p style="width: 200px;">Item Name</p>
+		<div class="row">
+		<img src="assets/img/nature/image2.jpg" height="50%" width="50%"  style="display: block; margin-left: auto;margin-right: auto;width: 50%;">
+		</div>
+		<br><br>
+		<div class="row">
+			<div class="col-md">
+			<center><p>Des</p></center>
+			</div>
+			</div>
+			<br><br>
+            <div class="row">
+			     <div class="col"> <p style="width: 200px;">Item Name</p></div>
+				 <div class="col"></div> <div class="col"></div>
+					<div class="col"><img src="assets/img/avatars/unicef.png" alt="logo" height="42" width="55" ><p>Unicef</p></div>
+					<div class="col"><a class="btn btn-primary btn-block button" href="Medical.html"style="background: blue;" >Help</a></div>
+
+
+			</div>
             <div class="progress" style="height: 40px;">
                 <div class="progress-bar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width: 70%;">70%</div>
             </div>
@@ -72,11 +106,12 @@
                 </div>
                 <div class="col-md-6">
                     <p class="text-right">Goal: &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;<br>
-<small class="text-muted"><i class="fa fa-clock-o text-primary"></i>Ends November 23, 2016</small></p>
+<small class="text-muted"><i class="fa fa-clock-o text-primary"></i> Ends November 23, 2016</small></p>
                 </div>
             </div>
         </div>
-    </div>
+		 </div>
+     -->
 	 </div><br>
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
@@ -95,3 +130,116 @@
 </footer>
 
 </html>
+
+<script>
+
+projectId = window.location.hash.substr(1);
+
+url = "http://localhost:3000/crisis/"+projectId;
+
+function createItem(title, description, location, peopleAffected, deaths, date, image)  {
+    const item = `
+    <h1>${title}</h1>
+    <p>Location : ${location}</p>
+    <div class="row">
+    <div class="column">
+        <p style="">${description}</p>
+        <p>Affected People : ${peopleAffected}</p> 
+        <p>Deaths: ${deaths}</p>
+        <p>Date: ${date.substring(0,10)}</p>
+    </div>
+  <div class="column">
+        <img src = ${image}>
+  </div>
+</div>`;
+    return item;
+}
+
+function createNeed(name, required, provided, charityImgUrl, charityName, charityUrl, donate, needUrl) {
+    // if donate is true, then button is Donate. If it is false, then the button is Volunteer
+    // charityImgUrl -  = 'http://lofrev.net/wp-content/photos/2016/06/red_cross_logo.png'
+    // charityName = 'Red Cross'
+    // donate = true
+
+    const percent = Math.round(provided / required * 100);
+    const need = `<div class="card-body">
+            <h4><small class="display-inline-block pull-right"></small></h4>
+
+            <div class="row">
+			    <div class="col"> <p style="width: 200px;">${name}</p></div>
+                <div class="col"></div>
+                <div class="col"><button class="btn btn-tertiary" type="button" style="float: right;"><img src="${charityImgUrl}" alt="logo" height="20%" width="20%" vertical-align="center">${charityName}</button></div>
+			    <div class="col"><button onclick="window.location.href='${needUrl}'" class="btn btn-primary" type="button" style="float: right;">${donate ? 'Donate' : 'Volunteer'}</button></div>
+			</div>
+            <div class="progress" style="height: 40px;">
+                <div class="progress-bar" aria-valuenow="${percent}" aria-valuemin="0" aria-valuemax="100" style="width: ${percent}%;">${percent}%</div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+
+                    <p>Raised:&nbsp;<br>
+
+    <small class="text-muted"><i class="fa fa-heart text-primary"></i>${provided} Donations</small></p>
+                </div>
+                <div class="col-md-6">
+                    <p class="text-right">Goal: &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;<br>
+    <small class="text-muted"><i class="fa fa-clock-o text-primary"></i> Ends November 23, 2016</small></p>
+                </div>
+            </div>
+        </div>`;
+    return need;
+}
+
+fetch(url, {
+    method: 'GET',
+}).then(response => response.json())
+    .then(async (data) => {
+        console.log(data);
+
+        const row = document.getElementById('target');
+        row.innerHTML += createItem(data.title, data.description, data.location.city, data.causalities[0].affected_people, data.causalities[0].dead_people, data.date.toString(), data.mediaURL);
+       // row.lastElementChild.children[0].
+
+        let needPhysicalUrl = "http://127.0.0.1:3000/needPhysical";
+        let physicalNeeds = await fetch(needPhysicalUrl).then(r => r.json());
+
+        let needSkillUrl = "http://127.0.0.1:3000/needSkill";
+        let skillNeeds = await fetch(needSkillUrl).then(r => r.json());
+
+        let charities = await fetch('http://127.0.0.1:3000/charity').then(r => r.json());
+
+        console.log('TOTAL: ', physicalNeeds, skillNeeds);
+        physicalNeeds = physicalNeeds.filter(need => need.crisisId === projectId);
+        skillNeeds = skillNeeds.filter(need => need.crisisId === projectId);
+
+        console.log('filtered: ', physicalNeeds, skillNeeds);
+
+        physicalNeeds.forEach(need => {
+            let charity = charities.find(charity => charity.charityId === need.charityId);
+            document.getElementById('needs').innerHTML += createNeed(
+                need.name,
+                need.quantity.required,
+                need.quantity.provided,
+                charity.logoURL,
+                charity.name,
+                true,
+                `http://127.0.0.1:3000/Donate.html#${need._id}`
+            );
+        });
+
+        skillNeeds.forEach(need => {
+            let charity = charities.find(charity => charity.charityId === need.charityId);
+            document.getElementById('needs').innerHTML += createNeed(
+                need.name,
+                need.quantity.required,
+                need.quantity.provided,
+                charity.logoURL,
+                charity.name,
+                false,
+                `http://127.0.0.1:3000/Donate.html#${need._id}`
+            );
+        });
+        // function createNeed(name, required, provided, charityImgUrl, charityName, donate, needUrl) {
+    });
+
+</script>
