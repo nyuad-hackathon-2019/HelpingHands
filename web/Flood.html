@@ -40,6 +40,7 @@
     </div>
     <br>
    <h1>How Can You Help?</h1></center><br>
+<!--
     <div class="card">
         <div class="card-body">
 		<div class="row">
@@ -55,10 +56,10 @@
             <div class="row">
 			     <div class="col"> <p style="width: 200px;">Item Name</p></div>
 				 <div class="col"></div> <div class="col"></div>
-					<div class="col"><img src="assets/img/avatars/red.png" alt="logo" height="42" width="55" ><p>Red Cross</p></div>	
+					<div class="col"><img src="assets/img/avatars/red.png" alt="logo" height="42" width="55" ><p>Red Cross</p></div>
 					<div class="col"><a class="btn btn-primary btn-block button" href="charity.html"style="background: blue;" >Donate</a></div>
-	
-      
+
+
 			</div>
             <div class="progress" style="height: 40px;">
                 <div class="progress-bar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width: 70%;">70%</div>
@@ -90,10 +91,10 @@
             <div class="row">
 			     <div class="col"> <p style="width: 200px;">Item Name</p></div>
 				 <div class="col"></div> <div class="col"></div>
-					<div class="col"><img src="assets/img/avatars/unicef.png" alt="logo" height="42" width="55" ><p>Unicef</p></div>	
+					<div class="col"><img src="assets/img/avatars/unicef.png" alt="logo" height="42" width="55" ><p>Unicef</p></div>
 					<div class="col"><a class="btn btn-primary btn-block button" href="Medical.html"style="background: blue;" >Help</a></div>
-	
-      
+
+
 			</div>
             <div class="progress" style="height: 40px;">
                 <div class="progress-bar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width: 70%;">70%</div>
@@ -110,6 +111,7 @@
             </div>
         </div>
 		 </div>
+     -->
 	 </div><br>
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
@@ -144,26 +146,30 @@ function createItem(title, description, location, peopleAffected, deaths, date) 
     return item;
 }
 
-function createNeed(name, required, provided) {
+function createNeed(name, required, provided, charityImgUrl, charityName, donate, skillUrl) {
+    // if donate is true, then button is Donate. If it is false, then the button is Volunteer
+    // charityImgUrl -  = 'http://lofrev.net/wp-content/photos/2016/06/red_cross_logo.png'
+    // charityName = 'Red Cross'
+    // donate = true
+
     const percent = Math.round(provided / required * 100);
     const need = `<div class="card-body">
             <h4><small class="display-inline-block pull-right"></small></h4>
-            
+
             <div class="row">
 			    <div class="col"> <p style="width: 200px;">${name}</p></div>
-                <div class="col"></div> 
                 <div class="col"></div>
-                <div class="col"><button class="btn btn-tertiary" type="button" style="float: right;"><img src="http://lofrev.net/wp-content/photos/2016/06/red_cross_logo.png" alt="logo" height="20%" width="20%" vertical-align="center"> Red Cross</button></div>
-			    <div class="col"><button class="btn btn-primary" type="button" style="float: right;">Donate</button></div>
+                <div class="col"><button class="btn btn-tertiary" type="button" style="float: right;"><img src="${charityImgUrl}" alt="logo" height="20%" width="20%" vertical-align="center">${charityName}</button></div>
+			    <div class="col"><button onclick="window.location.href='${skillUrl}'" class="btn btn-primary" type="button" style="float: right;">${donate ? 'Donate' : 'Volunteer'}</button></div>
 			</div>
             <div class="progress" style="height: 40px;">
                 <div class="progress-bar" aria-valuenow="${percent}" aria-valuemin="0" aria-valuemax="100" style="width: ${percent}%;">${percent}%</div>
             </div>
             <div class="row">
                 <div class="col-md-6">
-                    
+
                     <p>Raised:&nbsp;<br>
-                        
+
     <small class="text-muted"><i class="fa fa-heart text-primary"></i>${provided} Donations</small></p>
                 </div>
                 <div class="col-md-6">
@@ -172,7 +178,7 @@ function createNeed(name, required, provided) {
                 </div>
             </div>
         </div>`;
-return need;
+    return need;
 }
 
 fetch(url, {
@@ -211,5 +217,3 @@ fetch(url, {
     });
 
 </script>
-
-
