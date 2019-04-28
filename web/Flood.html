@@ -32,7 +32,7 @@
             </div>
         </div>
     </nav>
-	 <div class="container">
+	 <div class="container" id="needs">
 	 <br><br><br><br><br>
   <center>
     <div id="target">
@@ -144,6 +144,37 @@ function createItem(title, description, location, peopleAffected, deaths, date) 
     return item;
 }
 
+function createNeed(name, required, provided) {
+    const percent = Math.round(provided / required * 100);
+    const need = `<div class="card-body">
+            <h4><small class="display-inline-block pull-right"></small></h4>
+            
+            <div class="row">
+			    <div class="col"> <p style="width: 200px;">${name}</p></div>
+                <div class="col"></div> 
+                <div class="col"></div>
+                <div class="col"><button class="btn btn-tertiary" type="button" style="float: right;"><img src="http://lofrev.net/wp-content/photos/2016/06/red_cross_logo.png" alt="logo" height="20%" width="20%" vertical-align="center"> Red Cross</button></div>
+			    <div class="col"><button class="btn btn-primary" type="button" style="float: right;">Donate</button></div>
+			</div>
+            <div class="progress" style="height: 40px;">
+                <div class="progress-bar" aria-valuenow="${percent}" aria-valuemin="0" aria-valuemax="100" style="width: ${percent}%;">${percent}%</div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    
+                    <p>Raised:&nbsp;<br>
+                        
+    <small class="text-muted"><i class="fa fa-heart text-primary"></i>${provided} Donations</small></p>
+                </div>
+                <div class="col-md-6">
+                    <p class="text-right">Goal: &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;<br>
+    <small class="text-muted"><i class="fa fa-clock-o text-primary"></i> Ends November 23, 2016</small></p>
+                </div>
+            </div>
+        </div>`;
+return need;
+}
+
 fetch(url, {
     method: 'GET',
 }).then(response => response.json())
@@ -152,7 +183,7 @@ fetch(url, {
 
         const row = document.getElementById('target');
         row.innerHTML += createItem(data.title, data.description, data.location.city, data.causalities[0].affected_people, data.causalities[0].dead_people, data.date.toString());
-        // row.lastElementChild.children[0].
+       // row.lastElementChild.children[0].
 
         let needPhysicalUrl = "http://127.0.0.1:3000/needPhysical";
         let physicalNeeds = await fetch(needPhysicalUrl).then(r => r.json());
@@ -160,13 +191,25 @@ fetch(url, {
         let needSkillUrl = "http://127.0.0.1:3000/needSkill";
         let skillNeeds = await fetch(needSkillUrl).then(r => r.json());
 
-        console.log('TOTAL: ',  physicalNeeds, skillNeeds);
+        console.log('TOTAL: ', physicalNeeds, skillNeeds);
         physicalNeeds = physicalNeeds.filter(need => need.crisisId === projectId);
         skillNeeds = skillNeeds.filter(need => need.crisisId === projectId);
 
         console.log('filtered: ', physicalNeeds, skillNeeds);
 
+        physicalNeeds.forEach(need => {
+            document.getElementById('needs').innerHTML += createNeed(need.name,
+                need.quantity.required,
+                need.quantity.provided);
+        });
+
+        skillNeeds.forEach(need => {
+            document.getElementById('needs').innerHTML += createNeed(need.name,
+                need.quantity.required,
+                need.quantity.provided);
+        });
     });
 
-
 </script>
+
+
