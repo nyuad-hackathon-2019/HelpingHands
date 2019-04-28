@@ -155,7 +155,7 @@ function createItem(title, description, location, peopleAffected, deaths, date, 
     return item;
 }
 
-function createNeed(name, required, provided, charityImgUrl, charityName, donate, skillUrl) {
+function createNeed(name, required, provided, charityImgUrl, charityName, charityUrl, donate, needUrl) {
     // if donate is true, then button is Donate. If it is false, then the button is Volunteer
     // charityImgUrl -  = 'http://lofrev.net/wp-content/photos/2016/06/red_cross_logo.png'
     // charityName = 'Red Cross'
@@ -169,7 +169,7 @@ function createNeed(name, required, provided, charityImgUrl, charityName, donate
 			    <div class="col"> <p style="width: 200px;">${name}</p></div>
                 <div class="col"></div>
                 <div class="col"><button class="btn btn-tertiary" type="button" style="float: right;"><img src="${charityImgUrl}" alt="logo" height="20%" width="20%" vertical-align="center">${charityName}</button></div>
-			    <div class="col"><button onclick="window.location.href='${skillUrl}'" class="btn btn-primary" type="button" style="float: right;">${donate ? 'Donate' : 'Volunteer'}</button></div>
+			    <div class="col"><button onclick="window.location.href='${needUrl}'" class="btn btn-primary" type="button" style="float: right;">${donate ? 'Donate' : 'Volunteer'}</button></div>
 			</div>
             <div class="progress" style="height: 40px;">
                 <div class="progress-bar" aria-valuenow="${percent}" aria-valuemin="0" aria-valuemax="100" style="width: ${percent}%;">${percent}%</div>
@@ -206,6 +206,8 @@ fetch(url, {
         let needSkillUrl = "http://127.0.0.1:3000/needSkill";
         let skillNeeds = await fetch(needSkillUrl).then(r => r.json());
 
+        let charities = await fetch('http://127.0.0.1:3000/charity').then(r => r.json());
+
         console.log('TOTAL: ', physicalNeeds, skillNeeds);
         physicalNeeds = physicalNeeds.filter(need => need.crisisId === projectId);
         skillNeeds = skillNeeds.filter(need => need.crisisId === projectId);
@@ -213,16 +215,31 @@ fetch(url, {
         console.log('filtered: ', physicalNeeds, skillNeeds);
 
         physicalNeeds.forEach(need => {
-            document.getElementById('needs').innerHTML += createNeed(need.name,
+            let charity = charities.find(charity => charity.charityId === need.charityId);
+            document.getElementById('needs').innerHTML += createNeed(
+                need.name,
                 need.quantity.required,
-                need.quantity.provided);
+                need.quantity.provided,
+                charity.logoURL,
+                charity.name,
+                true,
+                `http://127.0.0.1:3000/Donate.html#${need._id}`
+            );
         });
 
         skillNeeds.forEach(need => {
-            document.getElementById('needs').innerHTML += createNeed(need.name,
+            let charity = charities.find(charity => charity.charityId === need.charityId);
+            document.getElementById('needs').innerHTML += createNeed(
+                need.name,
                 need.quantity.required,
-                need.quantity.provided);
+                need.quantity.provided,
+                charity.logoURL,
+                charity.name,
+                false,
+                `http://127.0.0.1:3000/Donate.html#${need._id}`
+            );
         });
+        // function createNeed(name, required, provided, charityImgUrl, charityName, donate, needUrl) {
     });
 
 </script>
