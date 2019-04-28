@@ -142,15 +142,18 @@ function createItem(title, description, location, peopleAffected, deaths, date, 
     <h1>${title}</h1>
     <p>Location : ${location}</p>
     <div class="row">
-    <div class="column">
-        <p style="">${description}</p>
-        <p>Affected People : ${peopleAffected}</p> 
-        <p>Deaths: ${deaths}</p>
-        <p>Date: ${date.substring(0,10)}</p>
-    </div>
-  <div class="column">
-        <img src = ${image}>
-  </div>
+
+        <span class="column" style="text-algin: left float: left">
+            <p style="">${description}</p>
+            <p>Affected People : ${peopleAffected}</p> 
+            <p>Deaths: ${deaths}</p>
+            <p>Date: ${date.substring(0,10)}</p>
+        </span>
+
+        <span class="column" style="text-algin: right float: right">
+        <img style="width: 100%; height: auto; max-width: 30vw;" src = ${image}>
+        </span>    
+
 </div>`;
     return item;
 }
@@ -160,6 +163,7 @@ function createNeed(name, required, provided, charityImgUrl, charityName, charit
     // charityImgUrl -  = 'http://lofrev.net/wp-content/photos/2016/06/red_cross_logo.png'
     // charityName = 'Red Cross'
     // donate = true
+    console.log(needUrl);
 
     const percent = Math.round(provided / required * 100);
     const need = `<div class="card-body">
@@ -215,6 +219,7 @@ fetch(url, {
         console.log('filtered: ', physicalNeeds, skillNeeds);
 
         physicalNeeds.forEach(need => {
+            console.log(need);
             let charity = charities.find(charity => charity.charityId === need.charityId);
             document.getElementById('needs').innerHTML += createNeed(
                 need.name,
@@ -222,8 +227,9 @@ fetch(url, {
                 need.quantity.provided,
                 charity.logoURL,
                 charity.name,
+                charity.website,
                 true,
-                `http://127.0.0.1:3000/Donate.html#${need._id}`
+                'Donate.html#' + need._id
             );
         });
 
@@ -235,11 +241,13 @@ fetch(url, {
                 need.quantity.provided,
                 charity.logoURL,
                 charity.name,
+                charity.website,
                 false,
-                `http://127.0.0.1:3000/Donate.html#${need._id}`
+                'Donate.html#' + need._id
             );
         });
-        // function createNeed(name, required, provided, charityImgUrl, charityName, donate, needUrl) {
+        // function createNeed(name, required, provided, charityImgUrl, charityName, charityUrl, donate, needUrl) {
+
     });
 
 </script>
