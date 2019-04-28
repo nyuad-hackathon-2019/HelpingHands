@@ -17,13 +17,13 @@
     <link rel="stylesheet" href="assets/css/Login-Form-Clean.css">
     <link rel="stylesheet" href="assets/css/Pretty-Registration-Form.css">
 	 <script>
-  
-  
+
+
       function myFunction(divid) {
 
       $('.cnt_div1').hide();
         var x = document.getElementById(divid);
-        
+
         if (x.style.display === "none") {
           x.style.display = "block";
         } else {
@@ -151,7 +151,7 @@ span.price {
                     <li class="nav-item" role="presentation"><a class="nav-link" href="Donations.html">Projects</a></li>
                     <li class="nav-item" role="presentation"><a class="nav-link" href="About%20Us.html">About Us</a></li>
                     <li class="nav-item" role="presentation"><a class="nav-link" href="login.html">Login</a></li>
-					
+
                 </ul>
             </div>
         </div>
@@ -162,13 +162,13 @@ span.price {
                 <div class="heading">
                     <h2>Donate Options</h2>
                 </div>
-                
 
-            <!--        
+
+            <!--
                         <div class="card border-0"><a href="#"></a></div><a class="btn btn-primary btn-circle btnCircular" role="button" href="Payment.html" data-bs-hover-animate="tada" style="width: 200px;height: 200px;padding-top: 88px;">Money</a>
-						
-				
-						
+
+
+
                         <div class="card border-0"><a href="#"></a></div><a class="btn btn-primary btn-circle btnCircular" role="button" href="Item.html" data-bs-hover-animate="tada" style="width: 200px;height: 200px;padding-top: 88px;">Item</a>
 					-->
 					<div class="row">
@@ -236,7 +236,7 @@ span.price {
               </div>
             </div>
           </div>
-          
+
         </div>
         <input type="submit" value="Continue to checkout" class="btn">
       </form>
@@ -244,9 +244,9 @@ span.price {
   </div>
 
 </div>
-			 
+
 			 </div>
-				 
+
 				 <div id="item" style=" margin-left: 30px;display: none;float: right;display: none;
           margin-right: 30px;" class="content margin-top-bottom-30 cnt_div1 col-10" >
 		     <main class="page projects-page">
@@ -257,25 +257,36 @@ span.price {
                 </div>
            <div class="row">
 			<div class="col-md">
-			<center><p>Des</p></center>
+			<center>
+                <img id="pic">
+                <p id="requirements"></p>
+            </center>
 			</div>
 			</div>
             </div>
         </section>
     </main>
 		  </div>
-         
+
             </div>
         </section>
     </main>
 	<br><br><BR>
- 
+
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="assets/js/bs-animation.js"></script>
     <script src="assets/js/Contact-Form-v2-Modal--Full-with-Google-Map.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pikaday/1.6.1/pikaday.min.js"></script>
     <script src="assets/js/theme.js"></script>
+    <script>
+        const needId = window.location.hash.substr(1);
+        const url = "http://localhost:3000/needPhysical/" + needId;
+        const need = await fetch(url).then(r => r.json());
+        document.getElementById('requirements').innerText = need.description;
+        // NOTE: should we have a .specification up here?
+        document.getElementById('pic').src = need.pictureURL;
+    </script>
 </body>
 
 </html>
