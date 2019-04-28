@@ -281,8 +281,9 @@ span.price {
     <script src="assets/js/theme.js"></script>
     <script>
         const needId = window.location.hash.substr(1);
-        const url = "http://localhost:3000/needPhysical/" + needId;
-        const need = await fetch(url).then(r => r.json());
+        const url = "http://localhost:3000/needPhysical/";
+        const needs = await fetch(url).then(r => r.json());
+        need = needs.find(need => need._id === needId);
         document.getElementById('requirements').innerText = need.description;
         // NOTE: should we have a .specification up here?
         document.getElementById('pic').src = need.pictureURL;
