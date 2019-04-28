@@ -170,7 +170,7 @@ function createItem(title, description, location, peopleAffected, deaths, date, 
 <div class="row">
   <div class="column" style="background-color:#f4f4f4; float: left; text-align: left; min-height: 320px;">
     <p style="">${description}</p>
-    <p>Affected People : ${peopleAffected}</p> 
+    <p>Affected People : ${peopleAffected}</p>
     <p>Deaths: ${deaths}</p>
     <p>Date: ${date.substring(0,10)}</p>
   </div>
@@ -195,7 +195,7 @@ function createNeed(name, required, provided, charityImgUrl, charityName, charit
             <div class="row">
 			    <div class="col"> <p style="width: 200px;">${name}</p></div>
                 <div class="col"></div>
-                <div class="col"><button class="btn btn-tertiary" type="button" style="float: right;"><img src="${charityImgUrl}" alt="logo" height="20%" width="20%" vertical-align="center">${charityName}</button></div>
+                <div class="col"><button onclick="window.location.href='${charityUrl}'" class="btn btn-tertiary" type="button" style="background-color: white; float: right;"><img src="${charityImgUrl}" alt="logo" height="20%" width="20%" vertical-align="center">${charityName}</button></div>
 			    <div class="col"><button onclick="window.location.href='${needUrl}'" class="btn btn-primary" type="button" style="float: right;">${donate ? 'Donate' : 'Volunteer'}</button></div>
 			</div>
             <div class="progress" style="height: 40px;">
@@ -206,7 +206,7 @@ function createNeed(name, required, provided, charityImgUrl, charityName, charit
 
                     <p>Raised:&nbsp;<br>
 
-    <small class="text-muted"><i class="fa fa-heart text-primary"></i>${provided} Donations</small></p>
+    <small class="text-muted"><i class="fa fa-heart text-primary"></i>${provided} Donated, ${required} Required</small></p>
                 </div>
                 <div class="col-md-6">
                     <p class="text-right">Goal: &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;<br>
@@ -266,7 +266,7 @@ fetch(url, {
                 charity.name,
                 charity.website,
                 false,
-                'Donate.html#' + need._id
+                'Medical.html#' + need._id
             );
         });
         // function createNeed(name, required, provided, charityImgUrl, charityName, charityUrl, donate, needUrl) {
